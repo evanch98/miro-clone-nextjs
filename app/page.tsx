@@ -1,3 +1,9 @@
+import { UserButton } from "@clerk/nextjs";
+
 export default function Home() {
-  return <p>Hello, Miro Clone</p>;
+  return (
+    <div className="flex flex-col gap-y-4">
+      <UserButton />
+    </div>
+  );
 }
