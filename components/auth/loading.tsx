@@ -6,8 +6,8 @@ export const Loading = () => {
       <Image
         src="logo.svg"
         alt="Logo"
-        width={120}
-        height={120}
+        width={48}
+        height={48}
         className="animate-spin duration-700"
       />
     </div>
