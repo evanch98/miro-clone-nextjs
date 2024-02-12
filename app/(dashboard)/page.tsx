@@ -1,7 +1,9 @@
-const Dashboard = () => {
+const DashboardPage = () => {
   return (
-    <div className="flex-1 h-[calc(100%-80px)] p-6">Dashboard Root Page</div>
+    <div className="flex-1 h-[calc(100%-80px)] p-6">
+      <EmptyOrg />
+    </div>
   );
 };
 
-export default Dashboard;
+export default DashboardPage;
