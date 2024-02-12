@@ -10,9 +10,8 @@ export const EmptyBoards = () => {
   const create = useMutation(api.board.create);
   const { organization } = useOrganization();
 
-  if (!organization) return null;
-
   const onClick = () => {
+    if (!organization) return;
     create({
       title: "Untitled",
       orgId: organization.id,
