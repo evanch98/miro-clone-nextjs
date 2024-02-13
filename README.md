@@ -6,4 +6,4 @@
 
 <br />
 February, 2024. <br />
-Full-stack Miro Clone project built by using Next JS 14, React, TypeScript, Shadcn UI, Tailwind CSS, Convex Database, Zustand and Clerk Auth.
+Full-stack Miro Clone project built by using Next JS 14, React, TypeScript, Shadcn UI, Tailwind CSS, Convex Database, Zustand, and Clerk Auth.
