@@ -7,6 +7,7 @@ import { Overlay } from "./overlay";
 import { useAuth } from "@clerk/nextjs";
 import { Footer } from "./footer";
 import { Skeleton } from "@/components/ui/skeleton";
+import { Actions } from "@/components/actions";
 
 interface BoardCardProps {
   id: string;
@@ -40,6 +41,9 @@ export const BoardCard = ({
         <div className="relative flex-1 bg-amber-50">
           <Image src={imageUrl} alt={title} fill className="object-fit" />
           <Overlay />
+          <Actions id={id} title={title} side="right">
+            <button>Button</button>
+          </Actions>
         </div>
         <Footer
           isFavorite={isFavorite}
