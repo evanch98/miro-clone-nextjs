@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Overlay } from "./overlay";
 import { useAuth } from "@clerk/nextjs";
+import { Footer } from "./footer";
 
 interface BoardCardProps {
   id: string;
