@@ -21,7 +21,7 @@ export const BoardList = ({ orgId, query }: BoardListProps) => {
 
   // data will never be undefined even if there is an error or is empty
   // if it is empty, convex will return null
-  if (true) {
+  if (data === undefined) {
     return (
       <div>
         <h2 className="text-3xl">
