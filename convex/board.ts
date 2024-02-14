@@ -1,6 +1,5 @@
 import { v } from "convex/values";
 import { mutation } from "./_generated/server";
-import { title } from "process";
 
 const images = [
   "/placeholders/1.svg",
