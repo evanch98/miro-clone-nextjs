@@ -14,6 +14,15 @@ const images = [
   "/placeholders/10.svg",
 ];
 
+/**
+ * Api endpoint to create a board.
+ * The function requires two arguments,
+ *   orgId of type string and
+ *   title of type string.
+ * The function 'create' will check if the user has logged in or not.
+ * If the use has not logged in, it will throw an Error.
+ * Otherwise, it will create a board.
+ */
 export const create = mutation({
   args: {
     orgId: v.string(),
@@ -40,6 +49,14 @@ export const create = mutation({
   },
 });
 
+/**
+ * Api endpoint for removing a board.
+ * The function requires one argument
+ *   board id
+ * The function 'remove' will check if the user has logged in.
+ * If the user has not logged in, it will throw an error.
+ * Otherwise, it will remove the board.
+ */
 export const remove = mutation({
   args: { id: v.id("boards") },
   handler: async (ctx, args) => {
