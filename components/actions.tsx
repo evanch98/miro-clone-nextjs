@@ -7,8 +7,10 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { api } from "@/convex/_generated/api";
+import { useApiMutation } from "@/hooks/use-api-mutation";
 import { DropdownMenuContentProps } from "@radix-ui/react-dropdown-menu";
-import { Link2 } from "lucide-react";
+import { Link2, Trash2 } from "lucide-react";
 import { toast } from "sonner";
 
 interface ActionsProps {
@@ -26,11 +28,19 @@ export const Actions = ({
   id,
   title,
 }: ActionsProps) => {
+  const { mutate, pending } = useApiMutation(api.board.remove);
+
   const onCopyLink = () => {
     navigator.clipboard
       .writeText(`${window.location.origin}/board/${id}`)
       .then(() => toast.success("Link copied"))
       .catch(() => toast.error("Failed to copy link"));
+  };
+
+  const onDelete = () => {
+    mutate({ id })
+      .then(() => toast.success("Board deleted"))
+      .catch(() => toast.error("Failed to delete board"));
   };
 
   return (
@@ -45,6 +55,10 @@ export const Actions = ({
         <DropdownMenuItem onClick={onCopyLink} className="p-3 cursor-pointer">
           <Link2 className="h-4 w-4 mr-2" />
           Copy board link
+        </DropdownMenuItem>
+        <DropdownMenuItem onClick={onDelete} className="p-3 cursor-pointer">
+          <Trash2 className="h-4 w-4 mr-2" />
+          Delete
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
