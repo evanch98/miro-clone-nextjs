@@ -1,6 +1,7 @@
 "use client";
 
 import { ConfirmModal } from "@/components/confirm-modal";
+import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -63,10 +64,13 @@ export const Actions = ({
           disabled={pending}
           onConfirm={onDelete}
         >
-          <DropdownMenuItem onClick={onDelete} className="p-3 cursor-pointer">
+          <Button
+            className="p-3 cursor-pointer text-sm w-full justify-start font-normal"
+            variant="ghost"
+          >
             <Trash2 className="h-4 w-4 mr-2" />
             Delete
-          </DropdownMenuItem>
+          </Button>
         </ConfirmModal>
       </DropdownMenuContent>
     </DropdownMenu>
