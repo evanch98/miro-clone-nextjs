@@ -1,5 +1,6 @@
 "use client";
 
+import { ConfirmModal } from "@/components/confirm-modal";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -56,10 +57,17 @@ export const Actions = ({
           <Link2 className="h-4 w-4 mr-2" />
           Copy board link
         </DropdownMenuItem>
-        <DropdownMenuItem onClick={onDelete} className="p-3 cursor-pointer">
-          <Trash2 className="h-4 w-4 mr-2" />
-          Delete
-        </DropdownMenuItem>
+        <ConfirmModal
+          header="Delete board?"
+          description="This will delete the board and all of its content."
+          disabled={pending}
+          onConfirm={onDelete}
+        >
+          <DropdownMenuItem onClick={onDelete} className="p-3 cursor-pointer">
+            <Trash2 className="h-4 w-4 mr-2" />
+            Delete
+          </DropdownMenuItem>
+        </ConfirmModal>
       </DropdownMenuContent>
     </DropdownMenu>
   );
