@@ -24,6 +24,16 @@ interface ActionsProps {
   title: string;
 }
 
+/**
+ * @name Actions
+ * @description Actions component is built on top of shadcn DropdownMenu component to allow users to do various actions (copy link url, rename the board, and delete the board) on the board they created
+ * @param param0 children accepts React elements (JSX Elements) to let user open the dropdown menu (required)
+ * @param param1 side accepts an argument of type DropdownMenuContentProps["side"] (optional)
+ * @param param2 sideOffset accepts an argument of type DropdownMenuContentProps["sideOffset"] (optional)
+ * @param param3 id accepts an argument of type string (id of the board) (required)
+ * @param param4 title accepts an argument of type title (title of the board) (required)
+ * @returns JSX Element
+ */
 export const Actions = ({
   children,
   side,
