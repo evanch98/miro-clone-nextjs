@@ -161,3 +161,51 @@ export const favorite = mutation({
     return board;
   },
 });
+
+/**
+ * Api endpoint to unfavorite a board.
+ * The function requires two arguments
+ *   board id and
+ *   orgId of type string
+ * The function 'unfavorite' will check if the user has logged in.
+ * If the user has not logged in, it will throw an error.
+ * The function 'unfavorite' will also check if the board exists.
+ * If the board does not exist, it will throw an error.
+ * The function 'unfavorite' will also check if the board has already been favorited.
+ * If the board has not already been favorited, it will throw an error.
+ * Otherwise, it will unfavorite the board.
+ */
+export const unfavorite = mutation({
+  args: { id: v.id("boards"), orgId: v.string() },
+  handler: async (ctx, arg) => {
+    const identity = await ctx.auth.getUserIdentity();
+
+    if (!identity) {
+      throw new Error("Unauthorized");
+    }
+
+    const board = await ctx.db.get(arg.id);
+
+    if (!board) {
+      throw new Error("Board not found");
+    }
+
+    const userId = identity.subject;
+
+    // To check if the user has already favorited the board
+    const existingFavorite = await ctx.db
+      .query("userFavorites")
+      .withIndex("by_user_board_org", (q) =>
+        q.eq("userId", userId).eq("boardId", board._id).eq("orgId", arg.orgId)
+      )
+      .unique();
+
+    if (!existingFavorite) {
+      throw new Error("Favorited board not found");
+    }
+
+    await ctx.db.delete(existingFavorite._id);
+
+    return board;
+  },
+});
