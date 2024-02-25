@@ -1,5 +1,9 @@
 "use client";
 
 export const Canvas = () => {
-  return <div>Canvas</div>;
+  return (
+    <main className="h-full w-full bg-neutral-100 relative touch-none">
+      Canvas
+    </main>
+  );
 };
