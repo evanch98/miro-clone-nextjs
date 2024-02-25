@@ -1,5 +1,7 @@
+import { Canvas } from "./_components/canvas";
+
 const BoardIdPage = () => {
-  return <div>BoardId Page</div>;
+  return <Canvas />;
 };
 
 export default BoardIdPage;
