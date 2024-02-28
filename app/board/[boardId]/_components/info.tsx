@@ -10,7 +10,7 @@ export const Info = () => {
   );
 };
 
-Info.Skeleton = function InfoSkeleton() {
+export const InfoSkeleton = () => {
   return (
     <div className="absolute top-2 left-2 bg-white rounded-md h-12 flex items-center w-[300px]">
       <Skeleton className="h-full w-full bg-neutral-200" />
