@@ -21,7 +21,22 @@ export const Cursor = memo(({ connectionId }: CursorProps) => {
 
   const { x, y } = cursor;
 
-  return <p></p>;
+  return (
+    <foreignObject
+      style={{ transform: `translateX(${x}px) translateY(${y}px)` }}
+      height={50}
+      width={50}
+      className="relative drop-shadow-md"
+    >
+      <MousePointer2
+        className="h-5 w-5"
+        style={{
+          fill: connectionIdToColor(connectionId),
+          color: connectionIdToColor(connectionId),
+        }}
+      />
+    </foreignObject>
+  );
 });
 
 Cursor.displayName = "Cursor";
