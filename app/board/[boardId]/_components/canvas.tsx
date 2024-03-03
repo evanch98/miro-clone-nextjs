@@ -32,6 +32,11 @@ export const Canvas = ({ boardId }: CanvasProps) => {
         undo={history.undo}
         redo={history.redo}
       />
+      <svg className="h-[100vh] w-[100vw]">
+        <g>
+          <CursorsPresence />
+        </g>
+      </svg>
     </main>
   );
 };
