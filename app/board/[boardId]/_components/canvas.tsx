@@ -30,7 +30,10 @@ export const Canvas = ({ boardId }: CanvasProps) => {
   const canRedo = useCanRedo();
 
   const onWheel = useCallback((e: React.WheelEvent) => {
-    setCamera((camera) => ({ x: camera.x - e.deltaX, y: camera.y - e.deltaY }));
+    setCamera((camera) => ({
+      x: camera.x - e.deltaX,
+      y: camera.y - e.deltaY,
+    }));
   }, []);
 
   const onPointerMove = useMutation(
