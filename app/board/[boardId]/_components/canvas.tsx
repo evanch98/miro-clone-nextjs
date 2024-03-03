@@ -12,6 +12,7 @@ import {
   useMutation,
 } from "@/liveblocks.config";
 import { CursorsPresence } from "./cursors-presence";
+import { pointerEventToCanvasPoint } from "@/lib/utils";
 
 interface CanvasProps {
   boardId: string;
@@ -36,7 +37,7 @@ export const Canvas = ({ boardId }: CanvasProps) => {
     ({ setMyPresence }, e: React.PointerEvent) => {
       e.preventDefault();
 
-      const current = { x: 0, y: 0 };
+      const current = pointerEventToCanvasPoint(e, camera);
 
       setMyPresence({ cursor: current });
     },
