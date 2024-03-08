@@ -23,6 +23,7 @@ import { CursorsPresence } from "./cursors-presence";
 import { pointerEventToCanvasPoint } from "@/lib/utils";
 import { nanoid } from "nanoid";
 import { LiveObject } from "@liveblocks/client";
+import { LayerPreview } from "./layer-preview";
 
 const MAX_LAYERS = 100;
 
