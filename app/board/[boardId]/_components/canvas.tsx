@@ -14,6 +14,8 @@ import {
 import { CursorsPresence } from "./cursors-presence";
 import { pointerEventToCanvasPoint } from "@/lib/utils";
 
+const MAX_LAYERS = 100;
+
 interface CanvasProps {
   boardId: string;
 }
