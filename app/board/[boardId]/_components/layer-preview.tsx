@@ -2,13 +2,13 @@
 
 interface LayerPreviewProps {
   id: string;
-  onLayerPointDown: (e: React.PointerEvent, layerId: string) => void;
+  onLayerPointerDown: () => void;
   selectionColor?: string;
 }
 
 export const LayerPreview = ({
   id,
-  onLayerPointDown,
+  onLayerPointerDown,
   selectionColor,
 }: LayerPreviewProps) => {
   return <div></div>;
