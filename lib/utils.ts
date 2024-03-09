@@ -1,4 +1,4 @@
-import { Camera } from "@/types/canvas";
+import { Camera, Color } from "@/types/canvas";
 import { type ClassValue, clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
 
@@ -20,4 +20,10 @@ export function pointerEventToCanvasPoint(
     x: Math.round(e.clientX) - camera.x,
     y: Math.round(e.clientY) - camera.y,
   };
+}
+
+export function colorToCss(color: Color) {
+  return `#${color.r.toString(16).padStart(2, "0")}${color.g
+    .toString(16)
+    .padStart(2, "0")}${color.b.toString(16).padStart(2, "0")}`;
 }
