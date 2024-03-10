@@ -185,7 +185,7 @@ export const Canvas = ({ boardId }: CanvasProps) => {
         translateSelectedLayers(current);
       } else if (canvasState.mode === CanvasMode.Resizing) {
         // Resizing
-        console.log("Resizing")
+        console.log("Resizing");
         resizeSelectedLayer(current);
       }
 
@@ -289,6 +289,7 @@ export const Canvas = ({ boardId }: CanvasProps) => {
         undo={history.undo}
         redo={history.redo}
       />
+      <SelectionTools camera={camera} setLastUsedColor={setLastUsedColor} />
       <svg
         className="h-[100vh] w-[100vw]"
         onWheel={onWheel}
