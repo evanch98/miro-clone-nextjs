@@ -90,6 +90,13 @@ export const Canvas = ({ boardId }: CanvasProps) => {
   );
 
   // Resize handler function
+  const resizeSelectedLayer = useMutation(({ storage, self }, point: Point) => {
+    if (canvasState.mode !== CanvasMode.Resizing) {
+      return;
+    }
+  }, []);
+
+  // Resize handler function
   const onResizeHandlePointerDown = useCallback(
     (corner: Side, initialBounds: XYWH) => {
       history.pause();
