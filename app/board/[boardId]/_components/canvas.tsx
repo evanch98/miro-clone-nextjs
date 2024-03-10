@@ -53,6 +53,7 @@ export const Canvas = ({ boardId }: CanvasProps) => {
   const canUndo = useCanUndo();
   const canRedo = useCanRedo();
 
+  // Insert layer function
   const insertLayer = useMutation(
     (
       { storage, setMyPresence },
@@ -88,6 +89,7 @@ export const Canvas = ({ boardId }: CanvasProps) => {
     [lastUsedColor]
   );
 
+  // Resize handler function
   const onResizeHandlePointerDown = useCallback(
     (corner: Side, initialBounds: XYWH) => {
       history.pause();
@@ -100,6 +102,7 @@ export const Canvas = ({ boardId }: CanvasProps) => {
     [history]
   );
 
+  // Scrolling wheel handler function
   const onWheel = useCallback((e: React.WheelEvent) => {
     setCamera((camera) => ({
       x: camera.x - e.deltaX,
@@ -107,26 +110,31 @@ export const Canvas = ({ boardId }: CanvasProps) => {
     }));
   }, []);
 
+  // Pointer move handler function
   const onPointerMove = useMutation(
     ({ setMyPresence }, e: React.PointerEvent) => {
       e.preventDefault();
 
       const current = pointerEventToCanvasPoint(e, camera);
 
+      if (canvasState.mode === CanvasMode.Resizing) {
+        console.log("Resizing");
+      }
+
       setMyPresence({ cursor: current });
     },
-    []
+    [canvasState]
   );
 
+  // Pointer leave handler function
   const onPointerLeave = useMutation(({ setMyPresence }) => {
     setMyPresence({ cursor: null });
   }, []);
 
+  // Pointer up handler function
   const onPointerUp = useMutation(
     ({}, e) => {
       const point = pointerEventToCanvasPoint(e, camera);
-
-      console.log({ point, mode: canvasState.mode });
 
       if (canvasState.mode === CanvasMode.Inserting) {
         insertLayer(canvasState.layerType, point);
@@ -141,6 +149,7 @@ export const Canvas = ({ boardId }: CanvasProps) => {
 
   const selections = useOthersMapped((other) => other.presence.selection);
 
+  // Layer pointer down handler function
   const onLayerPointerDown = useMutation(
     ({ self, setMyPresence }, e: React.PointerEvent, layerId: string) => {
       if (
@@ -164,6 +173,7 @@ export const Canvas = ({ boardId }: CanvasProps) => {
     [setCanvasState, camera, history, canvasState.mode]
   );
 
+  // layerIds to color helper function
   const layerIdsToColorSelection = useMemo(() => {
     const layerIdsToColorSelection: Record<string, string> = {};
 
