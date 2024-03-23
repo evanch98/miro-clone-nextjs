@@ -7,6 +7,7 @@ import { Rectangle } from "./rectangle";
 import { Ellipse } from "./ellipse";
 import { Text } from "./text";
 import { Note } from "./note";
+import { Path } from "./path";
 
 interface LayerPreviewProps {
   id: string;
@@ -27,6 +28,7 @@ export const LayerPreview = memo(
         return (
           <Path
             key={id}
+            id={id}
             points={layer.points}
             onPointerDown={onLayerPointerDown}
             selectionColor={selectionColor}
